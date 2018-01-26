@@ -1,3 +1,5 @@
+//Business Logic
+
 function Pizza(size, bread, topping) {
   this.size = size;
   this.bread = bread;
@@ -37,3 +39,22 @@ var determinePrice = function(points) {
   $("#price20").text($("ul#pizzaInfo").append("<li><span class='price'>$20</span></li>"));
 }
 };
+
+
+
+
+//Display Logic
+$(document).ready(function() {
+  $("form#orderPizza").submit(function(event){
+    event.preventDefault();
+    var inputtedSize = $("#sizePick").val();
+    var inputtedBread = $("#breadPick").val();
+    var inputtedTopping = $("#toppingPick").val();
+    var newPizza = new Pizza(inputtedSize, inputtedBread, inputtedTopping);
+    var pizzaDetail = newPizza.size + "," + newPizza.bread + "," + newPizza.topping;
+    var results = pizzaPoints(inputtedSize, inputtedBread, inputtedTopping)
+    $("ul#pizzaInfo").append("<li><span class='pizzaClass'>" + pizzaDetail + "</span></li>")
+    determinePrice(results);
+
+  });
+});

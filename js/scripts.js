@@ -27,4 +27,13 @@ var pizzaPoints = function(inputtedSize, inputtedBread, inputtedTopping) {
       points = points + 3;
 }
       return points;
+};
+var determinePrice = function(points) {
+  if (points <= 4) {
+  $("#price10").text($("ul#pizzaInfo").append("<li><span class='price'>$10</span></li>"));
+} else if (points > 4 && points < 8) {
+  $("#price15").text($("ul#pizzaInfo").append("<li><span class='price'>$15</span></li>"));
+} else {
+  $("#price20").text($("ul#pizzaInfo").append("<li><span class='price'>$20</span></li>"));
 }
+};
